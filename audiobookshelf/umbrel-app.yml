@@ -2,8 +2,8 @@ manifestVersion: 1
 id: audiobookshelf
 name: Audiobookshelf
 tagline: Audiobook and podcast server
-category: Media
-version: "2.2.11"
+category: media
+version: "2.7.1"
 port: 13378
 description: >-
   Features:
@@ -61,19 +61,22 @@ path: ""
 defaultUsername: ""
 defaultPassword: ""
 releaseNotes: >-
-  - Audiobookshelf now works with mobile apps (Android & iOS)
+  This release brings audiobookshelf from version 2.6.0 to 2.7.1. 
+
+  Note: OpenID Connect Authentication requires mobile app v0.9.70-beta or up
 
 
-  Added: 
-    - M4B merge tool advanced options for ffmpeg encoder
+  Added
 
-  Fixed: 
-    - Crash on adding podcast
-    - Dropdowns hidden in edit modals
-    - Get libraries API endpoint (bad response payload)
+  - Year in review stats images to user stats page
 
-  Changed: 
-    - API endpoint for author image allows raw=1 query to get raw image
-    - More strings translated: french, simplified Chinese, & German
+  - Ability to fetch book data in uploader
+
+  - Zoom controls to comic reader
+
+  Plus many fixes and changes...
+
+  
+  Full release notes can be found at https://github.com/advplyr/audiobookshelf/releases
 submitter: Jasper
 submission: https://github.com/getumbrel/umbrel-apps/pull/302

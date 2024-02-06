@@ -7,7 +7,7 @@ services:
       APP_PORT: 3000
 
   web:
-    image: ceramicwhite/invidious:build-961cae2@sha256:8974d6de8a7c9f5a431662eb95d9beb754e2df03e90c6b7d354001bdbec2582a
+    image: ceramicwhite/invidious:build-1c0b420@sha256:71d18b8b637fa37ae859e20402a97559c45ea1d2be08bd7035159118432f43ce
     restart: on-failure
     stop_grace_period: 1m
     user: "1000:1000"
@@ -28,6 +28,7 @@ services:
         default_user_preferences:
           feed_menu: ["Trending", "Subscriptions", "Playlists"]
           default_home: Trending
+        hmac_key: "${APP_SEED}"
     healthcheck:
       disable: true
     depends_on:

@@ -9,7 +9,7 @@ services:
 
 
   web:
-    image: ghcr.io/advplyr/audiobookshelf:2.2.11@sha256:6a3a3dceeb669b477851ce54d96c2140868e19606b0193ccbb3e98151e5b8e5e
+    image: ghcr.io/advplyr/audiobookshelf:2.7.1@sha256:78506de0bca185f0f396922dcdbd1badb795b0aa6ac2a5275c76b29f54131a07
     user: 1000:1000
     init: true
     restart: on-failure

@@ -1,8 +1,8 @@
 manifestVersion: 1
 id: invidious
-category: Social
+category: social
 name: Invidious
-version: "2023.4.10-961cae2"
+version: "2024.1.10-1c0b420"
 tagline: Browse YouTube without tracking or ads
 description: >-
   An open source alternative front-end to YouTube
@@ -48,20 +48,16 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  - Fix for subscription feed not updating.
+  - Add option to disable force_resolve in make_client
 
-  - Improve accessibility
+    Some websites such as archive.org and textcaptcha.com
+    does not support IPv6 and as such requests fail when Invidious requests
+    with IPv6 to those services.
 
-  - Videos: Add support for attributed descriptions
-  
-  - Update specs
+  - Reenable force_resolve on pubsub subscribe request
 
-  - Videos: fix description text offset when emojis are present
+  - Make force_resolve false by default in make_client
 
-  - fix view count extraction
-
-  - Search: Fix channel search
-  
-  - CSS: fix long description overflow
+  - Remove missed explicit force_resolve=false
 submitter: Jasper
 submission: https://github.com/getumbrel/umbrel-apps/pull/129

@@ -1,8 +1,8 @@
 manifestVersion: 1
 id: ghostfolio
-category: Finance
+category: finance
 name: Ghostfolio
-version: "1.241.0"
+version: "2.28.0"
 tagline: Manage your wealth like a boss
 description: >-
   Ghostfolio is a privacy-first, open source dashboard for your personal finances.
@@ -31,19 +31,22 @@ path: ""
 deterministicPassword: false
 torOnly: false
 releaseNotes: >
-  This release updates Ghostfolio from 1.231.0 to 1.241.0.
-  A full list of new features, improvements, and bug fixes
-  for versions between 1.231.0 and 1.241.0 can be found here: https://github.com/ghostfolio/ghostfolio/releases.
-    
-  Version 1.241.0 release notes:
-
-  - Filtered activities with type ITEM from search results
-
-  - Considered the user's language in the Stripe checkout
-
-  - Upgraded the Stripe dependencies
-
-  - Upgraded twitter-api-v2 from version 1.10.3 to 1.14.2
+  This release upgrades Ghostfolio from v2.14.0 to v2.28.0, and includes numerous bug fixes, performance improvements, and exciting new features. Here's what's new in the latest version:
   
+
+  Added:
+
+    - Added a historical cash balances table to the account detail dialog
+    - Introduced a 'HasPermission' annotation for endpoints
+
+  Changed:
+
+    - Relaxed the check for duplicates in the preview step of the activities import (allow same day)
+    - Respected the 'withExcludedAccounts' flag in the account balance time series
+  
+  Fixed:
+    - Changed the mechanism of the 'INTRADAY' data gathering to operate synchronously avoiding database deadlocks
+
+  For full release notes and additional changes from previous versions, please visit: https://github.com/ghostfolio/ghostfolio/releases
 submitter: BeauAgst
 submission: https://github.com/getumbrel/umbrel-apps/pull/396

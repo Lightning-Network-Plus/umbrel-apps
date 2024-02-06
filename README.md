@@ -163,7 +163,7 @@ Our app manifest YAML file tells Umbrel details about our app such as name, desc
 ```yml
 manifestVersion: 1
 id: btc-rpc-explorer
-category: Explorers
+category: finance
 name: BTC RPC Explorer
 version: "3.3.0"
 tagline: Simple, database-free blockchain explorer
@@ -197,6 +197,8 @@ gallery:
 path: ""
 defaultUsername: ""
 defaultPassword: ""
+submitter: Umbrel
+submission: https://github.com/getumbrel/umbrel/pull/334
 ```
 
 The `dependencies` section within the app manifest gives Umbrel a list of app IDs that must be already installed in order for the user to install BTC RPC Explorer and also function.
@@ -320,56 +322,6 @@ sudo ./scripts/repo checkout https://github.com/<username>/umbrel-apps.git
 sudo ./scripts/app update btc-rpc-explorer
 ```
 
-### 3.1 Testing the app on Umbrel development environment
-
-Umbrel development environment ([`umbrel-dev`](https://github.com/getumbrel/umbrel-dev)) is a lightweight regtest instance of Umbrel that runs inside a virtual machine on your system. It's currently only compatible with Linux or macOS, so if you're on Windows, you may skip this section and directly test your app on a Raspberry Pi 4 running [Umbrel OS](https://github.com/getumbrel/umbrel-os).
-
-1\. First, we'll install the `umbrel-dev` CLI and it's dependencies [Virtual Box](https://www.virtualbox.org) and [Vagrant](https://vagrantup.com) on our system. If you use [Homebrew](https://brew.sh) you can do that with just:
-
-```sh
-brew install lukechilds/tap/umbrel-dev gnu-sed
-brew install --cask virtualbox vagrant
-```
-
-2\. Now let's initialize our development environment and boot the VM:
-
-```sh
-mkdir umbrel-dev
-cd umbrel-dev
-umbrel-dev init
-umbrel-dev boot
-```
-
-> The first `umbrel-dev` boot usually takes a while due to the initial setup and configuration of the VM. Subsequent boots are much faster.
-
-After the VM has booted, we can verify if the Umbrel dashboard is accessible at http://umbrel-dev.local in our browser to make sure everything is running fine.
-
-3\. We need to use our forked remote app repo:
-
-```sh
-cd getumbrel/umbrel
-sudo ./scripts/repo checkout https://github.com/<username>/umbrel-apps.git
-```
-
-4\. And finally, it's time to install our app:
-
-```sh
-sudo ./scripts/app install btc-rpc-explorer
-```
-
-That's it! Our BTC RPC Explorer app should now be accessible at http://umbrel-dev.local:3002
-
-5\. To make changes:
-
-Let's commit and push our changes to our forked Umbrel app repo then run:
-
-```sh
-sudo ./scripts/repo checkout https://github.com/<username>/umbrel-apps.git
-sudo ./scripts/app update btc-rpc-explorer
-```
-
->Don't forget to shutdown the `umbrel-dev` virtual machine after testing with `umbrel-dev shutdown`!
-
 ### 3.2 Testing on Umbrel OS (Raspberry Pi 4)
 
 1\. We'll first install and run Umbrel OS on a Raspberry Pi 4. [Full instructions can be found here](https://getumbrel.com/#start). After installation, we'll set it up on http://umbrel.local, and then SSH into the Pi:
@@ -383,13 +335,13 @@ ssh umbrel@umbrel.local
 2\. Next, we'll switch to the forked remote app repo:
 
 ```sh
-sudo ./scripts/repo checkout https://github.com/<username>/umbrel-apps.git
+sudo ./umbrel/scripts/repo checkout https://github.com/<username>/umbrel-apps.git
 ```
 
 3\. Once the repo has updated, it's time to test our app:
 
 ```sh
-sudo ./scripts/app install btc-rpc-explorer
+sudo ./umbrel/scripts/app install btc-rpc-explorer
 ```
 
 The app should now be accessible at http://umbrel.local:3002
@@ -397,12 +349,12 @@ The app should now be accessible at http://umbrel.local:3002
 4\. To uninstall:
 
 ```sh
-sudo ./scripts/app uninstall btc-rpc-explorer
+sudo ./umbrel/scripts/app uninstall btc-rpc-explorer
 ```
 
 > When testing your app, make sure to verify that any application state that needs to be persisted is in-fact being persisted in volumes.
 >
-> A good way to test this is to restart the app with `scripts/app stop <app-id> && scripts/app start <app-id>`. If any state is lost, it means that state should be mapped to a persistent volume.
+> A good way to test this is to restart the app with `./umbrel/scripts/app stop <app-id> && ./umbrel/scripts/app start <app-id>`. If any state is lost, it means that state should be mapped to a persistent volume.
 >
 > When stopping/starting the app, all data in volumes will be persisted and anything else will be discarded. When uninstalling/installing an app, even persistent data will be discarded.
 
@@ -430,7 +382,6 @@ _(Upload 3 to 5 high-quality gallery images (1440x900px) of your app in PNG form
 
 
 ### I have tested my app on:
-- [ ] [Umbrel dev environment](https://github.com/getumbrel/umbrel-dev)
 - [ ] [Umbrel OS on a Raspberry Pi 4](https://github.com/getumbrel/umbrel-os)
 - [ ] [Custom Umbrel install on Linux](https://github.com/getumbrel/umbrel#-installation)
 ```
@@ -462,7 +413,7 @@ Some apps host a user facing at the root of their web application and then an AP
 PROXY_AUTH_WHITELIST: "/api/*"
 ```
 
-Another example could be that the root of the web application (`/`) should be publically accessible but the admin section by protected by Umbrel. This can be achieved by adding these env. vars. to the `app_proxy` Docker Compose service:
+Another example could be that the root of the web application (`/`) should be publically accessible but the admin section be protected by Umbrel. This can be achieved by adding these env. vars. to the `app_proxy` Docker Compose service:
 ```
 PROXY_AUTH_WHITELIST: "*"
 PROXY_AUTH_BLACKLIST: "/admin/*"

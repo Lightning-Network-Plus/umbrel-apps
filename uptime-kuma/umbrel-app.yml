@@ -1,8 +1,8 @@
 manifestVersion: 1
 id: uptime-kuma
-category: Networking
+category: networking
 name: Uptime Kuma
-version: "1.21.2"
+version: "1.23.7"
 tagline: Self-hosted uptime monitoring tool
 description: >
   Uptime Kuma is a self-hosted monitoring tool like Uptime Robot.
@@ -39,43 +39,36 @@ gallery:
 path: ""
 defaultPassword: ""
 releaseNotes: >
-  Updates Uptime Kuma from version 1.19.6 to 1.21.2.
+  ⚠️ Due to a security fix in this update, all login sessions will be logged out after updating to this version. 
+  If you are using some unofficial/3rd party tools, you may need to re-generate an auth token.
   
 
-  🆕 New Features:
+  This release updates Uptime Kuma from version 1.23.3 to 1.23.7.
+
+
+  💇‍♀️ Improvements:
   
-  - Now you can schedule maintenance with a cron expression + duration
-   
-   
-  💇‍♀️ Improvements to Maintenance:
-
-  - The core of maintenance feature is completely rewritten and is changed to cron based, the performance is much better
-
-  - Effective Date Range is no longer required, it is now optional
-
-  - Ability to set a timezone per maintenance
-
-  - Ability to follow the timezone with DST
-
+  - Show the original timeout message again and +10 seconds for abort signal
   
+  - Improved error message on abort signal timeout (Thanks @chakflying)
+
+
   🐛 Bug Fixes:
-  
-  - #3003 Maintenance is completely bugged in 1.21.1 and 1.21.0
-  
-  - #2988 Fix Ignore TLS/SSL Error is not working when using a proxy (Thanks @chakflying)
-  
- 
-  ⚠️ IMPORTANT - After upgrading, you should review the following maintenance items:
-  
-  - All old maintenance schedules will be set to UTC individually, if you need other timezones, please change it individually.
-  
-  - Since previous versions' maintenance is always respected to UTC, which means the maintenance time could be shifted due to DST in your country. 
-  
-  - Breaking change: Due to the limitation of cron, the options Last 2nd day of month, 
-  Last 3rd day of month and Last 4th day of month in the strategy Day of Month is no longer available. 
-  (Last day of month is still available)
 
+  - Fixed a memory leak issue. Close the client postgresql connection after rejection. (Thanks @mvaled)
+
+  - Reverted "Restart running monitors if no heartbeat", which causes some issues from 1.23.4 to 1.23.6.
+
+
+  ⬆️ Security Fixes
+
+  - An XSS issue in the "Google Analytics ID" text field (Reported by @gtg2619) (Read more: GHSA-v4v2-8h88-65qj)
+
+  - Rewrite Tailscale ping using spawnSync (Reported by @vaadata-pascala) (Read more: GHSA-v4v2-8h88-65qj)
+
+  - getGameList, testChrome are no longer accessible without login
   
-  Full changelog for versions 1.19.6 to 1.21.2 can be found here: https://github.com/louislam/uptime-kuma/releases
+
+  Full changelog for versions 1.23.3 to 1.23.7 can be found here: https://github.com/louislam/uptime-kuma/releases
 submitter: Philipp Haussleiter
 submission: https://github.com/getumbrel/umbrel/pull/1148

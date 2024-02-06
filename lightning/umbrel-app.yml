@@ -1,8 +1,8 @@
 manifestVersion: 1.1
 id: lightning
-category: Finance
+category: bitcoin
 name: Lightning Node
-version: "v0.16.2-beta"
+version: "v0.17.3-beta"
 tagline: Run your personal Lightning Network node
 description: >-
   Run your personal Lightning Network node, and join the future of Bitcoin today.
@@ -22,34 +22,22 @@ description: >-
 
   An official app from Umbrel.
 releaseNotes: >-
-  This release updates LND from v0.15.5-beta to v0.16.2-beta, and also includes bug fixes for the Lightning Node application.
+  This release updates LND from version 0.17.2-beta to 0.17.3-beta. 
 
 
-  Lightning Node application:
-
-  - keysend payments are now displayed in the Lightning Wallet transactions list
-
-  - multiple externalip entries are allowed in lnd.conf
-
-  - handle breaking change in lnd.conf apriori parameters introduced in LND v0.16.0-beta
+  - LND 0.17.3-beta fixes multiple concurrency and memory related bugs. Memory consumption for lnd nodes running with bitcoind using the rpcpolling has been significantly reduced (previously scaled with total mempool size).
 
 
-  LND:
+  - Full release notes are found at https://github.com/lightningnetwork/lnd/blob/master/docs/release-notes/
 
-  - Refined peer-to-peer behavior and BOLT spec compliance.
 
-  - Extended RPC functionality and wallet capabilities.
+  🔔 In case you missed it, a previous release of the Lightning Node app (v0.17.0-beta) brought the option to run your node in hybrid mode or Tor-only mode, along with the ability to open private channels, receive keysend payments, bugfixes, and more!
 
-  - Improved lncli features and pathfinding improvements.
 
-  - Streamlined watchtower session handling and address updates.
-
-  - Enhanced mempool scanning logic that no longer blocks startup.
-
-  - And more! 
+  - Hybrid mode allows your node to make connections to peers (other nodes) over both Tor and clearnet, enhancing both latency and connection stability. This is enabled by default for new users, while existing users can activate it in Advanced Settings.
   
-  
-  For more detailed information on these LND updates, please refer to the full release notes available at https://github.com/lightningnetwork/lnd/releases
+
+  - You can now now choose to open private channels, which offer increased privacy but limited routing capabilities compared to public channels.
 developer: Umbrel
 website: https://umbrel.com
 dependencies:

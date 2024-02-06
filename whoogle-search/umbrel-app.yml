@@ -1,8 +1,8 @@
 manifestVersion: 1
 id: whoogle-search
-category: Networking
+category: networking
 name: Whoogle Search
-version: "0.8.0"
+version: "0.8.4"
 tagline: A self-hosted, ad-free, privacy-respecting metasearch engine
 description: >-
   Get Google search results, but without any ads, javascript, AMP links, 
@@ -68,48 +68,18 @@ path: ""
 defaultUsername: ""
 defaultPassword: ""
 releaseNotes: >
-  Complete overhaul of session management
-
-  - Fixed runaway session file creation for public instance maintainers
-
-  - Fixed failure to decrypt subsequent result page queries (i.e. page 2 query appearing as "gAAAAA....")
-
+  Minor update:
+    - Site favicons are now fetched and displayed for each search result
+    - Audio tags are now interpreted correctly
+    - Primarily found in word definition cards in the results view
+    - POST requests now redirected as encrypted GET requests
+    - This allows navigating back from a result website to the Whoogle search result page without having to confirm form resubmission
+    - The "GET-only searches" config is still available for anyone who still prefers it
+    - URLs in element and window endpoints are now validated
+    - Fixes a potential vulnerability where an element or window endpoint could retrieve file contents from a service hosted on another port
+    - Valid HTML in result text content is now sanitized to prevent parsing issues
   
-  Added ability to navigate through results with Tab and Shift+Tab
-
   
-  Added an "Advanced Search" toggle in search results for quickly switching between countries
-
-  - Can be updated to support other search params, if requested
-
-  
-  Updated filter for sponsored results/advertising content
-
-  
-  Configured language + country is now included in search suggestion requests
-
-  
-  Fixed issues with bolding search terms in result pages
-
-  
-  Added ability to encode configuration in the URL
-
-  
-  Allows jumping between Whoogle instances (via Farside, for example) and maintaining the same configuration settings
-
-  
-  Fixed issues with result links to Google domains
-
-  
-  Reduced the amount of logging the Tor service outputs by default
-
-  
-  New translations:
-
-  - Thai
-
-  - Kurdish
-
-  - Welsh
+  Full release notes are found at https://github.com/benbusby/whoogle-search/releases/tag/v0.8.4
 submitter: Jasper
 submission: https://github.com/getumbrel/umbrel-apps/pull/117

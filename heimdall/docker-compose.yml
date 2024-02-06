@@ -8,7 +8,7 @@ services:
       PROXY_AUTH_ADD: "false"
 
   server:
-    image: lscr.io/linuxserver/heimdall:2.5.5@sha256:656efe8ee113ebcf8214d53e69cc25645ec11b020dec63e619bd379361cee58e
+    image: linuxserver/heimdall:2.5.8@sha256:462bf7fb9d11bbd8ee90924cac613efae85a6f666c371a9bc345386f83cdf404
     volumes:
       - ${APP_DATA_DIR}/config:/config
     environment:

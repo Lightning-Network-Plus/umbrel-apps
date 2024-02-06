@@ -1,8 +1,8 @@
 manifestVersion: 1
 id: photoprism
-category: Files
+category: files
 name: PhotoPrism
-version: "221105"
+version: "231128"
 tagline: Self-host your photo and video library
 description: >-
   PhotoPrism® is a privately hosted app for browsing, organizing, and
@@ -42,14 +42,20 @@ defaultUsername: "admin"
 deterministicPassword: true
 torOnly: false
 releaseNotes: >-
+  Our latest service release provides updated dependencies and fixes for recently discovered issues.
+
   What's new?
 
-  - UX: Photo editing dialog and includes the latest translations contributed by our community
- 
-  - UX: Improved layout of form fields in photo edit dialog
-  
-  - Account: Disabled "gender" dropdown when busy or in demo mode
-  
-  - Translations: Updated Estonian, Hungarian, and Russian
+  - Improved camera and lens information in the cards view details
+
+  - Fixed cards view rendering when a lens has no model description
+
+  - Improved performance when extracting still images for creating thumbnails
+
+  - Improved SVG conversion using RSVG instead of ImageMagick
+
+  - and many more...
+
+  Full release notes can be found at: https://github.com/photoprism/photoprism/releases/
 submitter: Umbrel
 submission: https://github.com/getumbrel/umbrel/commit/bf4c6f127f1fcf4dbe8eea55729502dfb34278e9

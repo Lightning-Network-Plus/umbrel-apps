@@ -1,29 +1,31 @@
 manifestVersion: 1
 id: torq
-category: Lightning Node Management
+category: bitcoin
 name: Torq
-version: "v0.20.3"
-tagline: Capital management for routing nodes on the lightning network
+version: "v1.5.1"
+tagline: Scalable Node Management Software
 description: >-
-  Operating a routing node requires managing capital efficiently. If you look past the technical challenges, what you are trying to do is stack sats and support the network by routing liquidity. No matter your motivation, efficiently managing your capital is essential.
+  Operating a Lightning node requires a lot of work. You need to monitor your channels, rebalance them, keep track of your fees and much more.
 
 
-  With Torq, you can collect routing data and you analyze your data with increasingly advanced tools.
+  With Torq, you can collect and analyze your data with increasingly advanced tools.
 
 
   Features:
 
-  - Channel and Channel group inspection
+  - Advanced decision engine for automation. Create your own logic visually through workflows.
+  
+  - Notifications via Telegram, Discord and Slack (with advanced logic and templating)
 
-  - See the channel balance (inbound/outbound capacity) over time
-
+  - Fast even with more than 1000 channels.
+  
   - Advanced charts and visualizations of aggregated forwarding statistics
 
-  - Visualization of sources and destinations for traffic
-
-  - Stores all events from your node including HTLC events, fee rate changes and channel enable/disable events
+  - Manage multiple nodes at once.
 
   - Filter, sort and group data
+
+  - Stores all events from your node including HTLC events, fee rate changes and channel enable/disable events
 
   - Store custom table views configurations for quickly finding the right information
 
@@ -33,13 +35,13 @@ description: >-
 
   - Tag channels and nodes with custom labels (Exchange, Routing node, Sink, Source, or anything else)
 
-  - Automation of channel policy (fee rate etc.) and add or remove tags
+  
 
-developer: LN Capital
-website: https://ln.capital
+developer: Torq
+website: https://torq.co
 dependencies:
   - lightning
-repo: https://github.com/lncapital/torq
+repo: ""
 support: https://github.com/lncapital/torq/issues/new
 port: 7028
 gallery:
@@ -49,12 +51,44 @@ gallery:
   - 4.jpg
   - 5.jpg
 releaseNotes: >-
-  New peers page, bugs and performance enhancements.
+  
+  Torq v.1.5.1:
 
-  Database migrations might take some time on first start up.
+  Release notes:
+
+  - CLN v23.11+ is required (pagination)
+
+  - Integration with Kraken
+
+  - New workflow triggers: Invoice, Forward, Payment, Transaction (on-chain)
+
+  - New workflow filters: Mempool, Exchange (Kraken) balance
+
+  - New workflow action: Payment Attempt (experimental: tries to find a route to pay an exchange invoice)
+
+  - New variables in workflow actions: API client, notification
+
+  - Replace intercom with chatwoot
+
+  - Small changes to rebalancer + new metrics and logs
+
+  - Timelock Delta in seconds on list screens
+
+  - Update of packages
+  
+  
+  Notes:
+  
+  - This release contains a large set of database updates. So the migration might take some time depending on the 
+    hardware and stored data. Please create a backup before updating, there is no automatic rollback process other 
+    then a database restore from before the migration.
+  
+  - This release (re)imports CLN data so it might take some time to get all data fetched from your CLN node. 
+    (No impact to LND nodes)
+  
 
 path: ""
 defaultUsername: ""
 deterministicPassword: false
-submitter: LN Capital
-submission: https://github.com/getumbrel/umbrel-apps/pull/269
+submitter: Torq
+submission: https://github.com/getumbrel/umbrel-apps/pull/549

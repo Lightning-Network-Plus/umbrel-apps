@@ -1,4 +1,4 @@
-version: "3.3"
+version: "3.7"
 services:
   app_proxy:
     environment:
@@ -7,7 +7,7 @@ services:
       PROXY_AUTH_ADD: "false"
   
   manager:
-    image: mopfelwinrux/urbit-umbrel:v2.2@sha256:936b83f6047bb70889a2c154b1fe8b915702affa050fb0ef7b533cceb16c7093
+    image: mopfelwinrux/urbit-umbrel:v2.12@sha256:e5902c942c31d610f0829649e0cf0ca4099e04f3e042b93e7b52230dd79c18d0
     ports:
       - "34343:34343"
     volumes:
